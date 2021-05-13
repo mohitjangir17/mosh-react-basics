@@ -1,0 +1,75 @@
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: 0;
+}
+.App {
+  text-align: center;
+  scroll-behavior: smooth;
+}
+
+.Header {
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 2px black solid;
+  background-color: rgb(50, 177, 50);
+}
+
+.reminder {
+  border-left: 5px solid rgb(255, 0, 0);
+}
+
+.Task-form {
+  margin: 1em;
+}
+form {
+  animation: slidedown 0.5s forwards 0s;
+  transition: ease-out;
+}
+
+@keyframes slidedown {
+  0% {
+    transform: translateY(-10%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+.form {
+  margin: 0 40%;
+  text-align: left;
+}
+
+.form > input {
+  padding: 0.5em 1em;
+  margin: 0.3em 0;
+  border: 1px black solid;
+  border-radius: 3px;
+}
+
+.form > label {
+  font-weight: bold;
+  padding: 3.5em 0em;
+}
+.Tasks {
+  border: 2px solid black;
+  margin: 0.5em 4em;
+  animation: cubic-bezier(0.785, 0.135, 0.15, 0.86);
+}
+.Task > ul > li {
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+}
+.Task > ul > li > div {
+  text-align: left;
+}
+.Task {
+  text-align: left;
+  margin: 0.5em 4em;
+  cursor: pointer;
+  border-radius: 4px;
+  background-color: rgb(230, 230, 230);
+}
