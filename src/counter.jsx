@@ -1,38 +1,32 @@
 import { React, Component } from "react";
 
 class Counter extends Component {
-  state = {
-    count: 0,
-    tags: ["Tag 1", "Tag 2"],
-  };
-
-  constructor() {
-    super();
-    this.onIncreament = this.onIncreament.bind(this);
-  }
-
-  onIncreament() {
-    // console.log(this.state.count, this);
-    this.setState({ count: this.state.count + 1 });
-    // console.log(this.setState);
-  }
+  // onIncreament = (product) => {
+  //   this.setState({ value: this.state.value + 1 });
+  // };
   render() {
     return (
       <div className="counter">
-        <h4>{this.counterData()}</h4>
+        <span style={{ margin: 10 }}>{this.counterData()}</span>
 
-        <button onClick={this.onIncreament}>Increament</button>
-        <ol>
-          {this.state.tags.map((tag) => (
-            <li key={tag}>{tag}</li>
-          ))}
-        </ol>
+        <button
+          style={{ margin: 10 }}
+          onClick={() => this.props.onIncreament(this.props.counter)}
+        >
+          Increament
+        </button>
+        <button
+          style={{ margin: 10 }}
+          onClick={() => this.props.onDelete(this.props.counter.id)}
+        >
+          Delete
+        </button>
       </div>
     );
   }
 
   counterData() {
-    const { count } = this.state;
+    const { value: count } = this.props.counter;
     return count === 0 ? "Zero" : count;
   }
 }
