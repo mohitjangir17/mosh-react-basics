@@ -1,39 +1,24 @@
 import { React, Component } from "react";
 import Counter from "./counter";
+import "./App.css";
 
 class Counters extends Component {
-  state = {
-    counters: [
-      { id: 0, value: 0 },
-      { id: 1, value: 0 },
-      { id: 2, value: 0 },
-      { id: 3, value: 0 },
-    ],
-  };
-
-  counterDelete = (counterId) => {
-    console.log("event fired", counterId);
-    const counters = this.state.counters.filter((c) => c.id !== counterId);
-
-    this.setState({ counters: counters });
-  };
-
-  handleIncreament = (counter) => {
-    const counters = [...this.state.counters];
-    const index = counters.indexOf(counter);
-    counters[index] = { ...counter };
-    counters[index].value++;
-    this.setState({ counters });
-  };
+  c;
   render() {
+    const { onReset, counters, onIncreament, onDecreament, onDelete } =
+      this.props;
     return (
-      <div>
-        {this.state.counters.map((counter) => (
+      <div className="main-counter">
+        <div className="reset-btn">
+          <button onClick={onReset}>Reset</button>
+        </div>
+        {counters.map((counter) => (
           <Counter
             key={counter.id}
-            onDelete={this.counterDelete}
-            onIncreament={this.handleIncreament}
+            onDelete={onDelete}
+            onIncreament={onIncreament}
             counter={counter}
+            onDecreament={onDecreament}
           />
         ))}
       </div>
